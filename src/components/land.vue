@@ -34,7 +34,7 @@
             },
             {
                 pic: '../place1.jpg',
-                name: 'Bugggy',
+                name: 'el unico diferente pa mostrar que funciona',
                 price: '99.98',
             },
             {

@@ -3,12 +3,13 @@
         mapStores
     } from "pinia";
     import {
+  
         tienda
     } from "../stores/gods.js";
     export default {
         data() {
             return {
-
+                bus:'',
                 desespero: []
             };
         },
@@ -19,7 +20,7 @@
             ...mapStores(tienda),
 
             catalog() {
-                return this.productsStore.getProducts;
+                return this.productsStore.getfilterproducts;
             }
         },
 
@@ -27,7 +28,13 @@
             this.desespero = this.catalog;
             this.productsStore.loadProducts();
 
-        },
+        },methods:{
+            volr () {
+                this.productsStore.funcy('busc', this.bus);
+
+                //console.log(busc.value)
+            }
+        }
 
     };
 </script>
@@ -37,7 +44,7 @@
 
         <section class="filter flex">
             <div class="filter__fondo flex">
-                <input type="text" class="filter__fondo__search" placeholder="Buscar">
+                <input type="text" class="filter__fondo__search" placeholder="Buscar" id="busc" v-model="bus" @change="() => volr()">
                 <div class="filter__fondo__filtrar flex">
                     <p class="filter__fondo__filtrar__texto">Filtrar Por tipo</p>
                     <select name="filtro" class="filter__fondo__filtrar__filtro" id="cat">
