@@ -1,14 +1,27 @@
 <script>
-  import {
-    RouterLink,
-    RouterView
-  } from 'vue-router'
-
-  
+  import {RouterLink,RouterView} from 'vue-router'
+  import {mapStores} from 'pinia'
+  import {useAuthenticationStore} from '../src/stores/verificarU'
 
   export default {
-    components: {
-
+    data(){
+return{
+  nolog : true,
+  showModal: false,
+  email: "",
+  contra: ""
+}
+    },
+    computed: {
+...mapStores(useAuthenticationStore)
+    },
+    methods:{
+entra() {
+  console.log("bien")
+  this.authenticationStore.SignIn(this.email, this.contra)
+  console.log("bien3")
+  //this.veridico.entra(this.email, this.contra)
+}
     }
   }
 
@@ -25,9 +38,45 @@
       <nav>
         <RouterLink to="/" class="item">INICIO</RouterLink>
         <RouterLink to="/catalogo" class="item">CATALOGO</RouterLink>
-        <RouterLink to="/bugguy" class="item">INFO</RouterLink>
+        <RouterLink to="/agregar" class="item">INFO</RouterLink>
         <RouterLink to="/bugguy" class="item">CONTACTO</RouterLink>
-        <RouterLink to="/agregar" class="item"><img src="..\Poff.png" alt="P" class="user"></RouterLink>
+        <button class="user" @click="showModal = true" v-if="nolog"><img src="..\Poff.png" alt="P" class="user"></button>
+
+        <transition name="fade">
+          <div class="modal" v-if="showModal">
+            <div class="modal__back flex">
+            <div class="regis flex">
+                <form id="CreateUserForm">
+                    <label for="name">Nombre</label>
+                    <input type="text" placeholder="Nombre" name="name" class="CUF">
+                    <label for="lastName">Apellido</label>
+                    <input type="text" placeholder="Apellido" name="lastName" class="CUF">
+                    <label for="Cel">Numero Celular</label>
+                    <input type="number" placeholder="Celular" name="Cel" class="CUF">
+                    <label for="email">Correo Electronico</label>
+                    <input type="email" placeholder="Correo Electronico" name="email" class="CUF">
+                    <label for="password">Contraseña</label>
+                    <input type="password" placeholder="Contraseña" name="password" class="CUF">
+
+                    <input type="submit" value="Crear Usuario" class="CUF">
+                </form>
+            </div>
+            <div class="loguin flex">
+                <form id="loguinForm">
+                    <label for="email">Correo Electronico</label>
+                    <input type="email" placeholder="Correo Electronico" name="email" class="LF" v-model="email">
+                    <label for="password">Contraseña</label>
+                    <input type="password" placeholder="Contraseña" name="password" class="LF" v-model="contra">
+                    <button class="LF" @click.prevent="entra">INGRESA</button>
+                </form>
+            </div>
+
+
+              <button class="clos" @click="showModal = false">X</button>
+            </div>
+          </div>
+        </transition>
+      
       </nav>
     </div>
       
@@ -42,6 +91,10 @@
 </template>
 
 <style lang="scss">
+
+.flex{
+  display: flex;
+}
 
 $primary-color: rgb(136, 47, 47);
 
@@ -90,6 +143,9 @@ $primary-color: rgb(136, 47, 47);
     width: 70px;
     height: 70px;
     margin-right: 40px;
+    background: transparent;
+    border: none !important;
+    font-size:0;
   }
   footer{
     padding-top:50px ;
@@ -153,5 +209,66 @@ align-items: center;
 
 
 }
+.modal{
+  z-index: 10;
+  display: flex;
+  background: #000000bd;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 
+  &__back{
+    justify-content: center;
+    background:  #FFB02D;
+    width: 50%;
+    height: auto;
+    flex-direction: row;
+
+  }
+}
+#CreateUserForm{
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+
+}
+#loguinForm{
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+.CUF{
+  margin: 10px 0 10px 0 ;
+}
+.LF{
+  margin: 10px 0 10px 0 ;
+}
+input{
+  align-items: center;
+    margin-bottom: 30px;
+    border: none;
+
+    font-size: 1.6vw;
+    border-radius: 40px;
+    background-repeat: no-repeat;
+    background-position: right;
+    padding: 10PX;
+    width: 250px;
+
+    &:hover {
+        background-color: #b47a3727;
+        border-radius: 20px;
+    }
+}
+.clos{
+  font-size:1.5vw ;
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  right: 600px;
+}
 </style>

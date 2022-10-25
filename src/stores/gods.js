@@ -5,7 +5,16 @@ import {
 export const tienda = defineStore("products", {
     state: () => ({
         products: [{
-                'name': '1',
+                'name': 'excavadora',
+                'zone': '2',
+                'type': '3',
+                'hay': 'false',
+                'description': 'noi',
+                'price': 99999,
+                'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
+            },
+            {
+                'name': 'niveladora',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -14,7 +23,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'compactadora',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -23,7 +32,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'grua',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -32,7 +41,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'grua de torre',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -41,7 +50,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'manipulador telescopico',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -50,7 +59,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'tanqueta',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -59,7 +68,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'volqueta',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -68,7 +77,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'hyper volqueta',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -77,7 +86,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'mini aplanadora',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -86,7 +95,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'tren carguero',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -95,7 +104,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'momtacargas',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -104,25 +113,16 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
-                'zone': '2',
-                'type': '3',
-                'hay': 'false',
-                'description': 'ni',
-                'price': 99999,
-                'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
-            },
-            {
-                'name': 'Aplanadora',
+                'name': 'Aplanadora 1765',
                 'zone': 'Cali',
                 'type': 'aplanadora',
                 'hay': 'false',
-                'description': 'la unica maquina real que tenemos',
+                'description': 'la unica maquina de la hera medieval que tenemos',
                 'price': 2000000,
                 'image': 'https://tubarco.news/wp-content/uploads/2021/08/E9bDUUTXoAEpI3G.jpg'
             },
             {
-                'name': '1',
+                'name': 'jhon',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -131,7 +131,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'camion estandar',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -140,7 +140,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'optimos primo',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -149,7 +149,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'grua comedicamente alta',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -158,7 +158,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'excavadora 2',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -167,7 +167,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'aplanadora de oro',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -176,7 +176,7 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'la multi herramienta',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
@@ -185,12 +185,12 @@ export const tienda = defineStore("products", {
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
             {
-                'name': '1',
+                'name': 'THE REAL BUGGUY',
                 'zone': '2',
                 'type': '3',
                 'hay': 'false',
-                'description': 'ni',
-                'price': 99999,
+                'description': 'almenos parte de la historia tenia que mantenerse',
+                'price': 0.00001,
                 'image': 'https://i.pinimg.com/736x/40/78/d0/4078d02c59cda3b48e6a937208f8a56b.jpg'
             },
 
@@ -201,14 +201,17 @@ export const tienda = defineStore("products", {
 
     getters: {
         getProducts: (state) => [...state.products],
-        getfilterproducts: (state) => {
-          
-            
-                const efectivo = state.products.filter( product=>{ 
-                    return state.zamba.kay? products.name.includes(state.zamba.key):true
-
+        
+        getFilterProducts: (state) => {
+  
+   
+                const efectivo = state.products.filter( product =>{ 
+                    console.log(state.zamba)
+                    return state.zamba.palabra? 
+                    product.description.includes(state.zamba.palabra) || product.name.includes(state.zamba.palabra):true
+        
                 })
-                console.log(efectivo)
+
             return efectivo        
         }
     },
@@ -225,10 +228,15 @@ export const tienda = defineStore("products", {
             this.localStorageProducts = JSON.parse(localStorage.getItem('products'));
             this.products = this.products.concat([...this.localStorageProducts]);
         },
+        zapato(id) {
+            console.log(id)
+            const filteredBooks = this.products.filter((product) => id === product.name);
+            return filteredBooks ? {...filteredBooks[0] } : null
+        },
 
         funcy(key,value){
             this.zamba[key] = value
-            console.log(this.zamba)
+   // console.log(this.zamba)
         }
     }
 });

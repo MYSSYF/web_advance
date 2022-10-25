@@ -9,7 +9,7 @@
     export default {
         data() {
             return {
-                bus:'',
+                palabra:'',
                 desespero: []
             };
         },
@@ -20,7 +20,7 @@
             ...mapStores(tienda),
 
             catalog() {
-                return this.productsStore.getfilterproducts;
+                return this.productsStore.getFilterProducts;
             }
         },
 
@@ -30,9 +30,9 @@
 
         },methods:{
             volr () {
-                this.productsStore.funcy('busc', this.bus);
+                this.productsStore.funcy('palabra', this.palabra);
 
-                //console.log(busc.value)
+                //console.log(this.bus)
             }
         }
 
@@ -44,7 +44,7 @@
 
         <section class="filter flex">
             <div class="filter__fondo flex">
-                <input type="text" class="filter__fondo__search" placeholder="Buscar" id="busc" v-model="bus" @change="() => volr()">
+                <input type="text" class="filter__fondo__search" placeholder="Buscar" id="palabra" v-model="palabra" @change="() => volr()">
                 <div class="filter__fondo__filtrar flex">
                     <p class="filter__fondo__filtrar__texto">Filtrar Por tipo</p>
                     <select name="filtro" class="filter__fondo__filtrar__filtro" id="cat">
@@ -93,7 +93,9 @@
             <div class="tarjeta">
                 <RouterLink v-for="product in catalog" :key="product.name" :to="`/ppp/${product.name}`" class="si">
                     <div class="tarjeta__cont">
+                        <div class="tarjeta__cont__img">
                         <img :src='product.image' alt="preview" class="img">
+                    </div>
                         <h4 class="tarjeta__cont">{{ product.name }}</h4>
                         <p class="tarjeta__cont">{{ product.price}}</p>
                         <p class="tarjeta__cont">{{ product.type}}</p>
@@ -158,6 +160,9 @@
         width: 250px;
         height: 60px;
     }
+    .products{
+        padding: 0 100px 0 100px;
+    }
 
     .filter {
         background-color: $c5;
@@ -201,14 +206,23 @@
     }
 
     .tarjeta {
+
         display: flex;
         flex-wrap: wrap;
 
         &__cont {
-            font-size: 1.4em;
+            width: 250px;
+            font-size: 1.5vw;
             margin-top: 20px;
+            position: relative;
+
+            &__img{
+            width: 100%;
+        }
 
             &__buy {
+                position: absolute;
+                bottom: 0;
                 width: 100%;
                 height: 40px;
             }
@@ -216,8 +230,8 @@
     }
 
     .img {
-        width: 10em;
-        height: 10em;
+        width: 100%;
+        height: 10vw;
 
     }
 
@@ -259,21 +273,8 @@ display: none;
             }
         }
     }
-    .tarjeta {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        &__cont {
-            font-size: 1.4em;
-            margin-top: 20px;
-
-            &__buy {
-                width: 100%;
-                height: 40px;
-            }
-        }
-    }
+   
+    
 
     }
 </style>

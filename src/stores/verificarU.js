@@ -1,27 +1,34 @@
-import {
-    defineStore
-} from "pinia";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-export const veridico = defineStore("products", {
- 
+import {defineStore} from "pinia";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../firebase"
 
-    getters: {
-       
-    },
+export const useAuthenticationStore = defineStore("authentication", {
+    state: () => ({
+
+    }),
+
     actions: {
-entra(email,password){
 
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-    });
-}
-    
+        SignIn(email,password){
+            signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+  // Signed in 
+         const user = userCredential.user;
+  // ...
+
+  console.log("Logged In")
+  alert("Logged in Succesfully")
+})
+.catch((error) => {
+  const errorCode = error.code;
+  const errorMessage = error.message;
+
+  console.log(errorMessage);
+
+  alert("Email or password are incorrect, please try again");
+});
+        },
+
+      
     }
 });
