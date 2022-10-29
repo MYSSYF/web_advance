@@ -1,11 +1,7 @@
 <script>
-    import {
-        mapStores
-    } from "pinia";
-    import {
-  
-        tienda
-    } from "../stores/gods.js";
+    import {mapStores } from "pinia";
+    import {tienda} from "../stores/gods";
+
     export default {
         data() {
             return {
@@ -21,12 +17,19 @@
 
             catalog() {
                 return this.productsStore.getFilterProducts;
+            },
+          
+            productsGet(){
+                return this.productsStore.getProducts;
             }
         },
 
         mounted() {
+            this.productsStore
             this.desespero = this.catalog;
-            this.productsStore.loadProducts();
+            this.productsStore.mostrar();
+       
+           
 
         },methods:{
             volr () {
@@ -34,7 +37,9 @@
 
                 //console.log(this.bus)
             }
-        }
+        },
+
+        
 
     };
 </script>
@@ -91,13 +96,13 @@
         <section class="products" id="products">
 
             <div class="tarjeta">
-                <RouterLink v-for="product in catalog" :key="product.name" :to="`/ppp/${product.name}`" class="si">
+                <RouterLink v-for="product in productsGet" :key="product.name" :to="`/ppp/${product.name}`" class="si">
                     <div class="tarjeta__cont">
                         <div class="tarjeta__cont__img">
                         <img :src='product.image' alt="preview" class="img">
                     </div>
                         <h4 class="tarjeta__cont">{{ product.name }}</h4>
-                        <p class="tarjeta__cont">{{ product.price}}</p>
+                        <p class="tarjeta__cont">${{ product.price}}</p>
                         <p class="tarjeta__cont">{{ product.type}}</p>
                         <button class="tarjeta__cont__buy">🛒</button>
                     </div>
@@ -222,7 +227,7 @@
 
             &__buy {
                 position: absolute;
-                bottom: 0;
+                bottom: -40;
                 width: 100%;
                 height: 40px;
             }

@@ -9,7 +9,10 @@ return{
   nolog : true,
   showModal: false,
   email: "",
-  contra: ""
+  contra: "",
+  nombre: "",
+  correo: "",
+  pass: ""
 }
     },
     computed: {
@@ -17,10 +20,21 @@ return{
     },
     methods:{
 entra() {
-  console.log("bien")
+
   this.authenticationStore.SignIn(this.email, this.contra)
-  console.log("bien3")
+
   //this.veridico.entra(this.email, this.contra)
+},
+cerrar(){
+            this.authenticationStore.signOut()
+        },
+regis(){
+
+    this.authenticationStore.SignUp(this.correo, this.pass, this.nombre)
+},
+mounted(){
+  this.authenticationStore.validar()
+
 }
     }
   }
@@ -48,17 +62,13 @@ entra() {
             <div class="regis flex">
                 <form id="CreateUserForm">
                     <label for="name">Nombre</label>
-                    <input type="text" placeholder="Nombre" name="name" class="CUF">
-                    <label for="lastName">Apellido</label>
-                    <input type="text" placeholder="Apellido" name="lastName" class="CUF">
-                    <label for="Cel">Numero Celular</label>
-                    <input type="number" placeholder="Celular" name="Cel" class="CUF">
+                    <input type="text" placeholder="Nombre" name="name" class="CUF" v-model="nombre">
                     <label for="email">Correo Electronico</label>
-                    <input type="email" placeholder="Correo Electronico" name="email" class="CUF">
+                    <input type="email" placeholder="Correo Electronico" name="email" class="CUF" v-model="correo">
                     <label for="password">Contraseña</label>
-                    <input type="password" placeholder="Contraseña" name="password" class="CUF">
+                    <input type="password" placeholder="Contraseña" name="password" class="CUF" v-model="pass">
 
-                    <input type="submit" value="Crear Usuario" class="CUF">
+                    <button class="LF" @click.prevent="regis">REGISTRATE</button>
                 </form>
             </div>
             <div class="loguin flex">

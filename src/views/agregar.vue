@@ -23,11 +23,8 @@ import { tienda } from "../stores/gods.js";
   },
 
   methods: {
-
-
-
       createNewProduct() {
-        //event.preventDefault();
+
       const newProduct = {
         name: this.name,
         zone: this.zone,
@@ -39,6 +36,7 @@ import { tienda } from "../stores/gods.js";
       };
  
       this.productsStore.newProduct(newProduct);
+      this.productsStore.subir(newProduct)
       
       this.name = '';
       this.zone = '';
@@ -107,7 +105,7 @@ import { tienda } from "../stores/gods.js";
   <label for="imgs" class="item1">Imagen correspondiente</label>
   <input type="file" id="imgs" class="item3"  multiple="multiple" @change="readImage">
 
-  <button type="submit" class="LFB flex" @click="(e) => createNewProduct()">enviar</button>
+  <button type="submit" class="LFB flex" @click.prevent="(e) => createNewProduct()">enviar</button>
 </form>
 
 </div>
