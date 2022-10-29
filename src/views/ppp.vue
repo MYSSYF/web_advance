@@ -3,7 +3,7 @@
 
     <div class="machin">
       <div class="machin__img">
-        <img :src=this.actual.image alt="preview" class="machin__img2">
+        <img :src=this.actual.image alt="preview" class="machin__img2" @click="volr">
       </div>
       
       <div class="machin__info">
@@ -15,7 +15,7 @@
         <p class="inf">{{this.actual.zone}}</p>
         <p class="ti">precio</p>
         <p class="inf"> {{this.actual.price }}</p>    
-        <button class="buy">🛒</button>
+        <button class="buy" >🛒</button>
       </div>
       
     </div>
@@ -29,7 +29,9 @@
   
   export default {
     data() {
-      return { actual: {} };
+      return { actual: {
+
+      } };
     },
 
     computed: {
@@ -37,14 +39,22 @@
       
     },
 
-    mounted() {
 
-      this.productsStore.loadProducts();
-    this.actual = this.productsStore.zapato(
-        this.$route.params.productId
-      );
+  mounted(){
 
+    this.productsStore.zapato(this.$route.params.productId) 
+              this.actual = this.productsStore.single
+              console.log(this.actual)
+ 
   },
+  methods:{
+            volr () {
+              this.productsStore.zapato(this.$route.params.productId) 
+              this.actual = this.productsStore.single
+              console.log(this.actual)
+             
+            }
+        },
   };
   </script>
     

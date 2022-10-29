@@ -35,7 +35,7 @@ import { tienda } from "../stores/gods.js";
         image: this.imgURL
       };
  
-      this.productsStore.newProduct(newProduct);
+      //this.productsStore.newProduct(newProduct);
       this.productsStore.subir(newProduct)
       
       this.name = '';

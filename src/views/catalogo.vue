@@ -25,7 +25,7 @@
         },
 
         mounted() {
-            this.productsStore
+            
             this.desespero = this.catalog;
             this.productsStore.mostrar();
        
@@ -96,7 +96,7 @@
         <section class="products" id="products">
 
             <div class="tarjeta">
-                <RouterLink v-for="product in productsGet" :key="product.name" :to="`/ppp/${product.name}`" class="si">
+                <RouterLink v-for="product in productsGet" :key="product.id" :to="`/ppp/${product.id}`" class="si">
                     <div class="tarjeta__cont">
                         <div class="tarjeta__cont__img">
                         <img :src='product.image' alt="preview" class="img">

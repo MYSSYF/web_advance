@@ -53,7 +53,7 @@ mounted(){
         <RouterLink to="/" class="item">INICIO</RouterLink>
         <RouterLink to="/catalogo" class="item">CATALOGO</RouterLink>
         <RouterLink to="/agregar" class="item">INFO</RouterLink>
-        <RouterLink to="/bugguy" class="item">CONTACTO</RouterLink>
+        <RouterLink to="/bugguy" class="item">CARRO</RouterLink>
         <button class="user" @click="showModal = true" v-if="nolog"><img src="..\Poff.png" alt="P" class="user"></button>
 
         <transition name="fade">
