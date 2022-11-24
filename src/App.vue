@@ -7,12 +7,15 @@
     data(){
 return{
   nolog : true,
+  log: false,
   showModal: false,
   email: "",
   contra: "",
   nombre: "",
   correo: "",
-  pass: ""
+  pass: "",
+  admin: false,
+  medal: false,
 }
     },
     computed: {
@@ -22,15 +25,30 @@ return{
 entra() {
 
   this.authenticationStore.SignIn(this.email, this.contra)
+    this.nolog = false
+    this.log = true
+   
 
   //this.veridico.entra(this.email, this.contra)
 },
+admon(){
+this.authenticationStore.dileQueEresAdmin()
+console.log(this.authenticationStore.dileQueEresAdmin())
+if(this.authenticationStore.dileQueEresAdmin()==true){
+  this.medal = true
+}else{
+  this.medal = false
+}
+},
 cerrar(){
             this.authenticationStore.signOut()
+            this.nolog = true
+            this.log = false
+   
         },
 regis(){
+ this.authenticationStore.SignUp(this.correo, this.pass, this.nombre,this.admin)
 
-    this.authenticationStore.SignUp(this.correo, this.pass, this.nombre)
 },
 mounted(){
   this.authenticationStore.validar()
@@ -45,16 +63,17 @@ mounted(){
 
   <header>
     <div class="header__part__1">
-      <img src="..\logo.png" alt="nop" class="header__logo">
+      <img src="..\logo.png" alt="nop" class="header__logo" @click="admon">
       <h2 class="tittle">DOMURA</h2>
     </div>
       <div class="header__part__2">
       <nav>
         <RouterLink to="/" class="item">INICIO</RouterLink>
         <RouterLink to="/catalogo" class="item">CATALOGO</RouterLink>
-        <RouterLink to="/agregar" class="item">INFO</RouterLink>
+        <RouterLink to="/agregar" class="item" v-if="medal">AÑADIR</RouterLink>
         <RouterLink to="/bugguy" class="item">CARRO</RouterLink>
         <button class="user" @click="showModal = true" v-if="nolog"><img src="..\Poff.png" alt="P" class="user"></button>
+        <button class="user" @click.prevent="cerrar" v-if="log"><img src="..\puff.png" alt="P" class="user"></button>
 
         <transition name="fade">
           <div class="modal" v-if="showModal">

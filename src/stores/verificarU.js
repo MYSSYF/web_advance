@@ -6,7 +6,9 @@ import { doc, setDoc  } from "firebase/firestore";
 
 export const useAuthenticationStore = defineStore("authentication", {
     state: () => ({
-
+      in: null,
+      pasar: false,
+      auth: auth
     }),
 
     actions: {
@@ -45,16 +47,16 @@ export const useAuthenticationStore = defineStore("authentication", {
       async addUserToDatabase(db, userId, userInfo){
         try{
           await setDoc(doc(db, "users", userId), userInfo);
-          alert("User created");
+          //alert("User created");
         }
   
         catch(error){
           console.log(error);
         }
       },
-       SignUp(email, password, name){
+       SignUp(email, password, name, admin){
    
-        let newUser = {email, password, name}
+        let newUser = {email, password, name, admin}
   
           createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
@@ -64,8 +66,7 @@ export const useAuthenticationStore = defineStore("authentication", {
             this.addUserToDatabase(db, user.uid, newUser)
   
             console.log("User created");
-            alert("User Created Succesfully");
-            // ...
+
           })
           .catch((error) => {
             const errorCode = error.code;
@@ -93,7 +94,29 @@ export const useAuthenticationStore = defineStore("authentication", {
   
         return userId;
       },
+      trae() {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.in = user;
 
+                if (user.uid == "mYCXvaIzLJXpS716wzD88wGIQVs2" ) {
+          
+                    this.pasar = true;
+           
+                }
+            } else {
+                console.log("No user")
+                this.pasar = false;
+            }
+        })
+
+        return this.in; 
+    },
+
+    dileQueEresAdmin() {
+      this.trae();
+        return this.pasar;
+    },
     
     }
 });
