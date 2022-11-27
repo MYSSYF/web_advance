@@ -89,8 +89,28 @@ export const useAuthenticationStore = defineStore("authentication", {
                 userId = user.uid
               } else {
                 console.log("User is not signed in");
+                userId = "anonimo"
               }
             });
+  
+        return userId;
+      },
+      validar2(){
+
+        let userId;
+        const user = auth.currentUser;
+  if(user!= null){
+    
+    userId = user.uid
+  }else{
+    userId="anonimo"
+  }
+
+
+
+   
+              
+            
   
         return userId;
       },
@@ -112,7 +132,6 @@ export const useAuthenticationStore = defineStore("authentication", {
 
         return this.in; 
     },
-
     dileQueEresAdmin() {
       this.trae();
         return this.pasar;

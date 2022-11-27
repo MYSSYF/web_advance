@@ -8,6 +8,7 @@ export const tienda = defineStore("products", {
         products: [],
         single:[],
         id: null,
+        id2: null,
         localStorageProducts: [],
         zamba : {}
     }),
@@ -85,6 +86,24 @@ export const tienda = defineStore("products", {
                 console.log(error);
               }
       },
+      async casualComent(f){
+        let objectId2 = String(Math.floor(Math.random() *(999-100)+100));
+
+        this.id2 = objectId2;
+
+        let newCom = f;
+        f.id2 = objectId2;
+
+        try{
+            await setDoc(doc(db, "coments", objectId2), newCom);
+            alert("Product uploaded");
+          }
+    
+          catch(error){
+            console.log(error);
+          }
+  },
+      
       async aclarando(){
         const querySnapshot = await getDocs(collection(db, "productos"));
         querySnapshot.forEach((doc) => {
@@ -130,6 +149,18 @@ export const tienda = defineStore("products", {
             this.list.push(this.productos);
         }
   
+    },
+    async getUser(id) {
+
+            const docRef = doc(db, "users", id);
+            try {
+                const docSnap = await getDoc(docRef);
+                const data = docSnap.data();
+                return data;
+            } catch (error) {
+                console.log(error);
+            }
+
     },
     },
     

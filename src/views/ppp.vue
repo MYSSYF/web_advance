@@ -7,7 +7,7 @@
       </div>
       
       <div class="machin__info">
-        <p class="t"> {{$route.params.productId}}</p>
+        <p class="t"> {{this.actual.name}}</p>
         <p class="inf"> {{ this.actual.description }}</p>
         <p class="ti">tipo de maquina</p>
         <p class="inf">{{this.actual.type}}</p>
@@ -18,7 +18,19 @@
         <button class="buy" >🛒</button>
       </div>
       
+      
     </div>
+  </section>
+  <section class="coment">
+    <p class="tip">Escribe comentarios</p>
+<div class="escribe">
+  <input type="textarea" class="put" v-model="coment">
+  <button type="submit" class="LFB flex" @click.prevent="creaComentario">enviar</button>
+</div>
+<p class="tip">Comentarios</p>
+<div class="mira">
+
+</div>
   </section>
   </template>
 
@@ -26,6 +38,7 @@
 
   import { mapStores } from "pinia";
   import { tienda } from "../stores/gods";
+  import {useAuthenticationStore} from '../stores/verificarU'
   
   export default {
     data() {
@@ -33,9 +46,17 @@
 
       } };
     },
+    inf() {
+    return {
+      producto: "",
+      usuario: "",
+      comentario: "",
+    };
+  },
+
 
     computed: {
-      ...mapStores(tienda),
+      ...mapStores(tienda, useAuthenticationStore),
       
     },
 
@@ -53,7 +74,30 @@
               this.actual = this.productsStore.single
               console.log(this.actual)
              
-            }
+            },
+
+            async creaComentario() {
+              const las = this.authenticationStore.validar2()
+              const gas = await this.productsStore.getUser(las)
+            
+              console.log(gas)
+
+const newComent = {
+  producto: this.actual.name,
+  usuario: gas.name,
+  comentario: this.coment,
+
+
+};
+
+this.productsStore.casualComent(newComent)
+
+    this.producto = '';
+    this.usuario = '';
+    this.comentario = '';
+
+
+},
         },
   };
   </script>
@@ -71,8 +115,24 @@
 display: flex;
 justify-content: center;
     }
+    .coment{
+      background-color: $c3;
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+    }
+    .put{
+      width: 90%;
+    }
     
     .ti{
+  font-size: 2em;
+  margin-top:30px ;
+ }
+ .tip{
+  display: flex;
+  justify-content: center;
   font-size: 2em;
   margin-top:30px ;
  }
@@ -88,7 +148,6 @@ justify-content: center;
   padding: 50px;
   align-content: space-between;
   justify-content: space-evenly;
-  width: 70%;
 
 
 &__info{
@@ -103,6 +162,28 @@ font-family: 'Roboto', sans-serif;
   height: 50em;
   width: 50em;
 }
+ }
+
+ .escribe{
+  border-radius: 30px;
+  display: flex;
+  background-color: $c5;
+margin: 20px;
+  padding: 50px;
+  align-content: space-between;
+  justify-content: center;
+  width: 70%;
+  align-items: baseline;
+ }
+ .mira{
+  border-radius: 30px;
+  display: flex;
+  background-color: $c5;
+  margin: 20px;
+  padding: 50px;
+  align-content: space-between;
+  justify-content: center;
+  width: 70%;
  }
 
  .buy{
