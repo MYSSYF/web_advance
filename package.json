@@ -4,12 +4,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 4173"
+    "preview": "vite preview --port 4173",
+    "test": "vitest",
+    "cove": "vitest run --coverage"
   },
   "dependencies": {
     "FileReader": "^0.10.2",
     "firebase": "^9.12.0",
     "gitart-scroll-carousel": "^1.2.4",
+    "happy-dom": "^7.7.0",
     "pinia": "^2.0.22",
     "vue": "^3.2.38",
     "vue-carousel": "^0.18.0",
@@ -18,8 +21,13 @@
     "vue3-carousel": "^0.1.46"
   },
   "devDependencies": {
+    "@pinia/testing": "^0.0.14",
     "@vitejs/plugin-vue": "^3.0.3",
+    "@vitest/coverage-c8": "^0.25.3",
+    "@vue/test-utils": "^2.2.4",
+    "happy-dom": "^7.7.0",
     "sass": "^1.54.9",
-    "vite": "^3.0.9"
+    "vite": "^3.0.9",
+    "vitest": "^0.25.3"
   }
 }

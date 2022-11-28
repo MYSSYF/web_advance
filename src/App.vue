@@ -5,6 +5,7 @@
 
   export default {
     data(){
+
 return{
   nolog : true,
   log: false,
@@ -47,6 +48,7 @@ cerrar(){
    
         },
 regis(){
+  const sap = this.nombre
  this.authenticationStore.SignUp(this.correo, this.pass, this.nombre,this.admin)
 
 },
