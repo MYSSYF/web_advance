@@ -30,7 +30,13 @@
 <p class="tip">Comentarios</p>
 <div class="mira">
 
-</div>
+                <div v-for="coments in sarcomentare" :key="coments.id2"  class="si">
+              
+                          <h1 class="tarjeta__cont">{{ coments.user }}</h1>
+                        <p class="fas">{{coments.coment}}</p>
+
+                </div>
+            </div>
   </section>
   </template>
 
@@ -57,11 +63,17 @@
 
     computed: {
       ...mapStores(tienda, useAuthenticationStore),
+
+      sarcomentare(){
+                return this.productsStore.getComents;
+            }
       
     },
 
 
   mounted(){
+    this.productsStore.mostrarC();
+       
 
     this.productsStore.zapato(this.$route.params.productId) 
               this.actual = this.productsStore.single

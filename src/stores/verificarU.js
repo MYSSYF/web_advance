@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
-import { signInWithEmailAndPassword,signOut, createUserWithEmailAndPassword,onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword,signOut, createUserWithEmailAndPassword,onAuthStateChanged,deleteUser,getAuth  } from "firebase/auth";
 import {auth, db,} from "../firebase"
-import { doc, setDoc  } from "firebase/firestore"; 
+import { doc, setDoc,deleteDoc   } from "firebase/firestore"; 
 
 
 export const useAuthenticationStore = defineStore("authentication", {
@@ -107,11 +107,6 @@ export const useAuthenticationStore = defineStore("authentication", {
   }
 
 
-
-   
-              
-            
-  
         return userId;
       },
       trae() {
@@ -136,6 +131,20 @@ export const useAuthenticationStore = defineStore("authentication", {
       this.trae();
         return this.pasar;
     },
+ async  KILL(){
+     
+      const auth = getAuth();
+const user = auth.currentUser;
+console.log(user.uid)
+await deleteDoc(doc(db, "users", user.uid));
+ deleteUser(user).then(() => {
+  alert("morisionado")
+  // User deleted.
+}).catch((error) => {
+  // An error ocurred
+  // ...
+});
+    }
     
     }
 });

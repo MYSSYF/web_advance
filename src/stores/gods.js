@@ -6,6 +6,7 @@ import {  doc, setDoc ,collection,getDocs,getDoc } from "firebase/firestore";
 export const tienda = defineStore("products", {
     state: () => ({
         products: [],
+        coments: [],
         single:[],
         id: null,
         id2: null,
@@ -27,7 +28,8 @@ export const tienda = defineStore("products", {
                 })
 
             return efectivo        
-        }
+        },
+        getComents: (state) => [...state.coments],
     },
 
     actions: {
@@ -150,6 +152,44 @@ export const tienda = defineStore("products", {
         }
   
     },
+    async mostrarC(){
+
+        this.list2 = [];
+        this.coments = [];
+        this.describiendo();
+  
+        console.log(this.coments);
+      
+        let valor2;
+        let ob2;
+  
+        let teemp = [];
+  
+
+  
+        for(let i = 0; i < teemp.length; i++){
+  
+            this.coments = teemp[i];
+            this.list2.push(this.coments);
+        }
+  
+    },
+    async describiendo(){
+        const querySnapshot2 = await getDocs(collection(db, "coments"));
+        querySnapshot2.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+
+        const coment = {
+            "id":doc.data().id2,
+            "prod":doc.data().producto,
+            "user": doc.data().usuario,
+            "coment": doc.data().comentario
+        }
+
+        this.coments.push(coment);
+        });
+
+      },
     async getUser(id) {
 
             const docRef = doc(db, "users", id);

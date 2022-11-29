@@ -47,8 +47,13 @@ cerrar(){
             this.log = false
    
         },
+        morir(){
+          this.authenticationStore.KILL()
+         // this.nolog = true
+           // this.log = false
+        },
 regis(){
-  const sap = this.nombre
+
  this.authenticationStore.SignUp(this.correo, this.pass, this.nombre,this.admin)
 
 },
@@ -74,6 +79,7 @@ mounted(){
         <RouterLink to="/catalogo" class="item">CATALOGO</RouterLink>
         <RouterLink to="/agregar" class="item" v-if="medal">AÑADIR</RouterLink>
         <RouterLink to="/bugguy" class="item">CARRO</RouterLink>
+        <p class="item" v-if="log" @click.prevent="morir">💀💀💀</p>
         <button class="user" @click="showModal = true" v-if="nolog"><img src="..\Poff.png" alt="P" class="user"></button>
         <button class="user" @click.prevent="cerrar" v-if="log"><img src="..\puff.png" alt="P" class="user"></button>
 
