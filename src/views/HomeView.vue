@@ -14,7 +14,7 @@ components:{
 <template>
   <body>
     <section class="banner flex">
-      <img src="../../ban.png" alt="no" class="ban_img" />
+      <img src="../assets/ban.png" alt="no" class="ban_img" />
       <div class="block"></div>
       <div class="text">
         <P class="t1">SERIES 7</P>
@@ -32,7 +32,7 @@ components:{
             constructores
           </p>
         </div>
-        <img src="../../cons.jpg" alt="no" class="mision__img flex" />
+        <img src="../assets/cons.jpg" alt="no" class="mision__img flex" />
       </div>
     </section>
     <section class="ofertas">
@@ -62,7 +62,7 @@ p {
 }
 
 body {
-  background-image: url("../../fan.jpg");
+  background-image: url("../assets/fan.jpg");
   height: 100%;
   margin: 0px;
 }

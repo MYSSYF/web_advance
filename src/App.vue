@@ -74,7 +74,7 @@ mounted(){
 
   <header>
     <div class="header__part__1">
-      <img src="..\logo.png" alt="nop" class="header__logo" @click="admon">
+      <img src="../src/assets/logo.png" alt="nop" class="header__logo" @click="admon">
       <h2 class="tittle">DOMURA</h2>
     </div>
       <div class="header__part__2">
@@ -84,8 +84,8 @@ mounted(){
         <RouterLink to="/agregar" class="item" v-if="medal">AÑADIR</RouterLink>
         <RouterLink to="/bugguy" class="item">CARRO</RouterLink>
         <p class="item" v-if="log" @click.prevent="morir">💀💀💀</p>
-        <button class="user" @click="showModal = true" v-if="nolog"><img src="..\Poff.png" alt="P" class="user"></button>
-        <button class="user" @click.prevent="cerrar" v-if="log"><img src="..\puff.png" alt="P" class="user"></button>
+        <button class="user" @click="showModal = true" v-if="nolog"><img src="../src/assets/Poff.png" alt="P" class="user"></button>
+        <button class="user" @click.prevent="cerrar" v-if="log"><img src="../src/assets/puff.png" alt="P" class="user"></button>
 
         <transition name="fade">
           <div class="modal" v-if="showModal">

@@ -4,7 +4,7 @@
     
     <template>
         <div class="imga">
-            <img src="../../place1.jpg">
+            <img src="../assets/place1.jpg">
         </div>
     </template>
     
