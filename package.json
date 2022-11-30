@@ -1,6 +1,7 @@
 {
   "name": "paso1",
   "version": "0.0.0",
+  "homepage": "https://[YourGitHubAccountName].github.io/[YourProjectName]",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
