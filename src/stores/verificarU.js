@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import { signInWithEmailAndPassword,signOut, createUserWithEmailAndPassword,onAuthStateChanged,deleteUser,getAuth  } from "firebase/auth";
+import { signInWithEmailAndPassword,signOut, createUserWithEmailAndPassword,onAuthStateChanged,deleteUser,getAuth, sendPasswordResetEmail  } from "firebase/auth";
 import {auth, db,} from "../firebase"
 import { doc, setDoc,deleteDoc   } from "firebase/firestore"; 
 
@@ -130,6 +130,21 @@ export const useAuthenticationStore = defineStore("authentication", {
     dileQueEresAdmin() {
       this.trae();
         return this.pasar;
+    },
+    revert(email){
+      const auth = getAuth();
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          // Password reset email sent!
+          alert("mire su correo")
+          // ..
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+        });
+      
     },
  async  KILL(){
      

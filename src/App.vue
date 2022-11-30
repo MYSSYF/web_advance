@@ -15,6 +15,7 @@ return{
   nombre: "",
   correo: "",
   pass: "",
+  recup: "",
   admin: false,
   medal: false,
 }
@@ -49,8 +50,11 @@ cerrar(){
         },
         morir(){
           this.authenticationStore.KILL()
-         // this.nolog = true
-           // this.log = false
+          this.nolog = true
+           this.log = false
+        },
+        rever(){
+          this.authenticationStore.revert(this.recup)
         },
 regis(){
 
@@ -105,6 +109,8 @@ mounted(){
                     <label for="password">Contraseña</label>
                     <input type="password" placeholder="Contraseña" name="password" class="LF" v-model="contra">
                     <button class="LF" @click.prevent="entra">INGRESA</button>
+                    <input type="email" placeholder="recuperar contra" name="email" class="CUF" v-model="recup">
+                    <p class="item" @click.prevent="rever">🤡</p>
                 </form>
             </div>
 

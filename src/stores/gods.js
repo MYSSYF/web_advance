@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import { db,} from "../firebase"
-import {  doc, setDoc ,collection,getDocs,getDoc } from "firebase/firestore"; 
+import {  doc, setDoc ,collection,getDocs,getDoc,deleteDoc } from "firebase/firestore"; 
 
 
 export const tienda = defineStore("products", {
@@ -31,6 +31,7 @@ export const tienda = defineStore("products", {
         },
         getComents: (state) => [...state.coments],
     },
+   
 
     actions: {
 
@@ -154,15 +155,11 @@ export const tienda = defineStore("products", {
     },
     async mostrarC(){
 
-        this.list2 = [];
-        this.coments = [];
+
         this.describiendo();
   
         console.log(this.coments);
       
-        let valor2;
-        let ob2;
-  
         let teemp = [];
   
 
@@ -171,8 +168,13 @@ export const tienda = defineStore("products", {
   
             this.coments = teemp[i];
             this.list2.push(this.coments);
+
         }
   
+    },
+    yap(){
+
+return this.coments
     },
     async describiendo(){
         const querySnapshot2 = await getDocs(collection(db, "coments"));
@@ -202,6 +204,13 @@ export const tienda = defineStore("products", {
             }
 
     },
+    async  KILL(vital){
+
+ 
+  await deleteDoc(doc(db, "coments", vital));
+   
+
+      }
     },
     
 });

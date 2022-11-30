@@ -30,11 +30,15 @@
 <p class="tip">Comentarios</p>
 <div class="mira">
 
-                <div v-for="coments in sarcomentare" :key="coments.id2"  class="si">
-              
-                          <h1 class="tarjeta__cont">{{ coments.user }}</h1>
-                        <p class="fas">{{coments.coment}}</p>
+                <div v-for="coments in sarcomentare" :key="coments.id2"  class="si" >
+       
+<div class="depreso">
 
+  <h2 class="cont">{{ coments.user }}</h2>
+  <p class="fas">{{coments.coment}}</p>
+</div>
+  <button @click.prevent="matar">x</button>
+      
                 </div>
             </div>
   </section>
@@ -54,9 +58,11 @@
     },
     inf() {
     return {
+      provis: [],
       producto: "",
       usuario: "",
       comentario: "",
+      merp: true,
     };
   },
 
@@ -66,13 +72,15 @@
 
       sarcomentare(){
                 return this.productsStore.getComents;
-            }
-      
+               
+            },
+
     },
 
 
   mounted(){
     this.productsStore.mostrarC();
+
        
 
     this.productsStore.zapato(this.$route.params.productId) 
@@ -85,7 +93,13 @@
               this.productsStore.zapato(this.$route.params.productId) 
               this.actual = this.productsStore.single
               console.log(this.actual)
+
              
+            },
+            trasbalador(){
+
+                    console.log(this.productsStore.yap())
+    
             },
 
             async creaComentario() {
@@ -110,6 +124,10 @@ this.productsStore.casualComent(newComent)
 
 
 },
+matar(){
+
+  //this.productsStore.KILL(sep)
+}
         },
   };
   </script>
@@ -137,7 +155,29 @@ align-items: center;
     .put{
       width: 90%;
     }
-    
+    .si{
+      margin: 10px;
+      background-color: #ffffff;
+      display: flex;
+ 
+    }
+    .cont{
+display: flex;
+width: 200px;
+background-color: #828282;
+padding-left: 30px;
+    }
+    .fas{
+      display: flex;
+      font-size: 1.3em;
+      margin: 20px;
+ 
+    }
+    .depreso{
+      width: 100%;
+    display: flex;
+    flex-direction: column;
+    }
     .ti{
   font-size: 2em;
   margin-top:30px ;
@@ -194,6 +234,7 @@ margin: 20px;
   margin: 20px;
   padding: 50px;
   align-content: space-between;
+  flex-direction: column;
   justify-content: center;
   width: 70%;
  }
