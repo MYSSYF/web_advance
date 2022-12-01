@@ -1,1 +1,0 @@
-import{_ as e,o,c as t,a as n}from"./index.9963496b.js";const s={name:"not Found"},a=n("h1",{class:"bif"},"404 VOLUNTAD NO ENCONTRADA",-1),_=[a];function c(r,d,l,p,i,u){return o(),t("body",null,_)}const m=e(s,[["render",c]]);export{m as default};

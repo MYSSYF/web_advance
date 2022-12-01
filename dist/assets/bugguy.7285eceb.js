@@ -1,1 +1,0 @@
-import{_ as e,o as s,c as t,a as o}from"./index.9963496b.js";const _="https://github.com/MYSSYF/web_advance.git/assets/place1.ddfbdbaa.jpg";const c={},a={class:"imga"},n=o("img",{src:_},null,-1),r=[n];function d(i,p,u,g,l,m){return s(),t("div",a,r)}const b=e(c,[["render",d]]);export{b as default};
